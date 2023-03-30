@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI-Based News Summary</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summarize-btn').click(function() {
+                const url = $('#url-input').val();
+                $.post('/summarize', {url: url}, function(data, textStatus) {
+                    $('#summary').text(data.summary);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>AI-Based News Summary</h1>
+    <input type="text" id="url-input" placeholder="Enter the news URL">
+    <button id="summarize-btn">Summarize</button>
+    <h2>Summary:</h2>
+    <p id="summary"></p>
+</body>
+</html>
