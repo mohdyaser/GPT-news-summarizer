@@ -16,10 +16,10 @@ def extract_content(url):
         pass
     return article
 
-def chatGPT(userinput,temperature=1,max_tokens=300, words = 100): 
+def chatGPT(userinput,temperature=1,max_tokens=2500, words = 150): 
     response = openai.ChatCompletion.create(
         model='gpt-3.5-turbo', 
-        messages= [{"role":"user","content": f"Please provide a summary of the following text in about {words} words or less:" + userinput}],
+        messages= [{"role":"user","content": f"summarize the following text in {words} words or less: {userinput}"}],
         temperature=temperature, 
         max_tokens=max_tokens
     )
